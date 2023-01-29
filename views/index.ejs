@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo-list</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="fullbg" id="idfullbg">
+        <div class="childbg" id="idchildbg"></div>
+        <form method="post">
+            <div class="listcard">
+                <div class="uheaderdiv">
+                    <p name="header" class="uheader" id="idheader"><%= header %></p>
+                </div>
+                <ul class="ullists">
+                    <% for(var i=0; i<listIte.length; i++){ %>
+                        <li><%= listIte[i] %></li>
+                    <% } %>
+                </ul>
+                <div class="addnew">
+                    <input type="text" placeholder="todo item" name="list_item" class="yinput">
+                    <button name="uhead" type="menu" value="<%= header %>" class="ybutton" formaction="<%=header%>/addList">Submit</button>
+                </div>
+            </div>
+           
+            <div id="idsidemenu" class="sidemenu">
+                <div class="upperside">
+                    <p class="sideGreet">Hello <%=userFName%></p>
+                </div> 
+                <div class="mainLowerside">
+                    <div class="lowerside">  
+                        <ul id="headerLists">
+                            <% for(var i=0; i<hLists.length; i++){ %>
+                                <a href="/<%=hLists[i]%>"><li><%= hLists[i] %></li></a>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mainLower2">
+                    <div class="lastLower">
+                        <input type="text" placeholder="New Header" name="inHeader" class="binput" id="ibinput">
+                        <button type="submit" name="createHead" class="bbutton" id="createBut" formaction="<%=header%>/addHeader">Create</button>
+                    </div>  
+                    <button type="submit" formaction="/logout" class="ylogout">Logout</button>
+                </div>
+            </div>
+            <button type="button" id="explore"><i class="fa-solid fa-compass" id="iexplore"></i></button>
+        </form> 
+    </div>
+    <script src="https://kit.fontawesome.com/e499e1a3c2.js" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

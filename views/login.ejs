@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Register</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    
+    <div id="idfullbg" class="lfullbg rfullbg">
+        <div id="idlogincard" class="lcard rCard">
+            
+            <p id="idlhead" class="lheadline">Login</p>
+            <form method="post" id="loginForm">
+                <input type="text" name="username" placeholder="username" id="idlusr" class="lusr">
+                <input type="password" name="password" placeholder="password" id="idlpwd" class="lpwd">
+            </form>
+            <button type="submit" id="idlogin" class="login" form="loginForm" formaction="\login">Login</button>
+            <button type="button" id="idgor" class="doR">Not Registered?</button>
+
+            <p id="idrhead" class="lheadline rheadline">Register</p>
+            <form method="post" id="registerForm">
+                <input type="text" name="fname" placeholder="First Name" id="idfname" class="fname">
+                <input type="text" name="username" placeholder="rusername" id="idrusr" class="lusr rusr">      
+                <input type="password" name="password" placeholder="rpassword" id="idrpwd" class="lpwd rpwd">
+            </form>
+            <button type="submit" id="idregister" class="login register" form="registerForm" formaction="\register">Register</button>
+            <button type="button" id="idgol" class="doR" >Already Registered?</button>
+        </div>
+            <a class="gsignup" href="/auth/google" role="button">
+                <i class="fab fa-google"></i>
+                Sign Up with Google
+            </a>
+        </div>
+    </div>
+    </form>
+    <script src="https://kit.fontawesome.com/e499e1a3c2.js" crossorigin="anonymous"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

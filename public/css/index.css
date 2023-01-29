@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+:root{
+    --darkblue: rgb(0, 89, 255);
+    --wh4op: rgba(255, 255, 255, 0.4);
+    --wh2op: rgba(255,255,255,0.2);
+    --wh1op: rgba(255,255,255,0.1);
+    --mixgb: #7CEA9C;
+    --simpurple: #593959;
+    --contrastorange: #C44900;
+    --richblack: #04151F;
+    --englishred: #A23E48;
+    --mangotango: #FF8C42;
+    --seagreen: #2CF6B3;
+    --safetyorange: #FF7700;
+    --indigodye: #004777;
+    --spacecadetblue: #1F2041;
+    --ming: #006D77;
+    --midbluegreen: #83C5BE;
+    --oldburgendy: #472D30;
+    --sage: #C9CBA3;
+    --rosepink: #E365C1;
+    --snow: #F6EFEE;
+    --darkseinna: #53131E;
+    --caribbeanGreen: #00C49A;
+    --skobeloff: #156064;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body{
+    /* background-image: -webkit-linear-gradient(60deg, #3551 50%, #4A78 50%); */
+    /* background: radial-gradient(rgba(255, 209, 149, 0.882), rgba(246, 185, 104, 0.876), rgba(251, 167, 58, 0.876)); */
+    /* padding: 2rem; */
+    
+}
+
+/* body::-webkit-scrollbar {
+width: 0.6rem;
+} */
+
+/* body::-webkit-scrollbar-track { */
+/* box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.885); */
+/* background-color: transparent; */
+/* } */
+
+/* body::-webkit-scrollbar-thumb {
+background-color: rgb(0, 238, 255);
+border-radius: 1rem; */
+/* outline: 0.1rem solid rgb(255, 55, 0); */
+/* } */
+
+*::-webkit-scrollbar {
+    /* background-color: transparent; */
+    width: 0.2rem;
+}
+/* * {
+    scrollbar-width: thin;
+    scrollbar-color: blue;
+} */
+*::-webkit-scrollbar-track {
+    background-color: rgb(216, 216, 251);
+}
+*::-webkit-scrollbar-thumb {
+    background: var(--indigodye);
+}
+
+.fullbg{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 1rem; */
+    /* background-image: url("https://cdn.wallpapersafari.com/91/20/zkyH0r.jpg"); */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    /* overflow: overlay; */
+}
+
+.childbg{
+    position: fixed;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    /* max-width: 100%;
+    max-height: 100%; */
+    background-color: black;
+    background-image: url("https://cdn.wallpapersafari.com/91/20/zkyH0r.jpg");
+    background-position: center;
+    background-size: cover;
+    z-index: -10;
+    transition: 0.3s all ease-out;
+}
+
+.zoomchildbg{
+    transform: scale(1.2);
+}
+
+.listcard{
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    margin: 4rem;
+    /* border: 0.1rem solid rgb(146, 146, 146); */
+    box-shadow: 0rem 0rem 0.5rem white;
+    color: white;
+}
+
+.uheaderdiv{
+    background: var(--mangotango);
+    color: var(--darkseinna);
+    border-radius: 0.5rem;
+    padding: 0.7rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.ullists{
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 2rem;  
+}
+
+.addnew{
+    display: inline-block;
+}
+
+.createhead{
+    position: absolute;
+    top: 1rem;
+}
+
+.binput{
+    display: inline-block;
+    /* margin: 0 0.1rem; */
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    background: rgb(255, 255, 255);
+    color: var(--indigodye);
+    border: 0.2rem solid var(--indigodye);
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-out;
+}
+
+.binput:focus{
+    outline: var(--indigodye);
+    box-shadow: 0 0 0.5rem rgb(255, 255, 255);
+}
+
+.bbutton{
+    /* margin: 0 0.1rem; */
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border: 0.2rem solid var(--indigodye);
+    background: rgb(255, 255, 255);
+    color: var(--indigodye);
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+
+.bbutton:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 0.5rem rgba(223, 223, 223, 0.76);
+} 
+
+.yinput{
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background: white;
+    
+    border: 0.2rem solid var(--mangotango);
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-out;
+}
+
+.yinput:focus{
+    outline: var(--mangotango);
+    box-shadow: 0 0 0.5rem rgb(255, 255, 255);
+}
+
+.ybutton{
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 0.2rem solid var(--mangotango);
+    background: white;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+
+.ybutton:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 0.5rem rgba(196, 196, 196, 0.76);
+}
+
+/* Side menu */
+.sidemenu{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    right: -22.5rem;
+    top: 0;
+    height: 100%;
+    color: white;
+    width: 22rem;
+    transition: 0.3s all ease-out;
+    padding: 1rem;
+    border-radius: 1rem 0 0 1rem;
+    box-shadow: -0.3rem 0 0.3rem white;
+    background: var(--ming);
+    backdrop-filter: blur(0.5rem);
+}
+
+.sidemenuActive{
+    position: fixed;
+    right: 0rem;
+}
+
+
+#explore{
+    position: fixed;
+    top: 1.3rem;
+    right: 1rem;
+    color: white;
+    font-size: 3rem; 
+    z-index: 1000;
+    cursor: pointer;
+    background: none;
+    border: none; 
+    transition: 0.3s all ease-out;
+}
+
+.fa-compass{
+    background: rgb(0, 0, 0);
+    border: 0.3rem solid var(--indigodye);
+    border-radius: 50%;
+    box-shadow: 0 0 0.3rem white;
+    transition: 0.3s all ease-out;
+}
+
+.fa-compass:hover:active{
+    /* transform: scale(0.8); */
+    background: rgb(0, 0, 0);
+    border: 0.3rem solid var(--spacecadetblue);
+    box-shadow: 0 0 0.3rem white;
+    color: rgba(255, 255, 255, 0.871);
+}
+
+.upperside{
+    background: var(--midbluegreen);
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    /* margin-right: 3rem; */
+    text-align: center;
+}
+
+.sideGreet{
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--indigodye);
+    margin: 0 2rem;
+}
+
+.mainLowerside{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 18rem;
+    height: 65vh;
+}
+
+.lowerside{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: var(--midbluegreen);
+    margin-top: 1rem;
+    max-height: 60vh;
+    width: 100%;
+    overflow-y:scroll;
+    overflow-x: hidden;
+    border: 0.5rem solid var(--midbluegreen);
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0 0.4rem rgba(0, 0, 0, 0.829); 
+    
+    /* height: 50vh; */
+}
+
+.lowerside ul{
+    list-style: none; 
+}
+
+.lowerside a{
+    text-decoration: none;
+}
+
+.lowerside li{
+    background: var(--wh2op);
+    color: var(--indigodye);
+    font-weight: 600;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    margin: 1rem;
+    border-radius: 0.4rem;
+    text-align: center;
+    transition: 0.1s all ease-in;
+}
+
+.lowerside li:hover{
+    background: var(--wh1op);
+    box-shadow: 0 0 0.3rem white;
+    transform: scale(1.05);
+}
+
+.mainLower2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ylogout{
+    outline: black;
+    background: black;
+    color: white;
+    margin: 0;
+    border: 0;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border-radius: 0.2rem;
+    transition: 0.1s all ease-out;
+    cursor: pointer;
+}
+
+.ylogout:hover{
+    background: rgba(0, 0, 0, 0.735);
+}
+
+.lastLower{
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    display: inline-block;
+    width: 100%;
+}
+
+@media (max-width: 490px) {
+    h1{
+        font-size: 1.5rem;
+    }
+    h2{
+        font-size: 1rem;
+    }
+    .listcard{
+        margin: 5vw;
+    }
+    .ullists{
+        font-size: 1rem;
+        margin: 1rem;
+    }
+    .yinput{
+        /* margin: 0.3rem; */
+        padding: 0.3rem;
+        font-size: 0.6rem;
+        background: rgba(255, 252, 208, 0.661);
+        border: 0.2rem solid rgba(255, 157, 0, 0.895);
+        border-radius: 0.5rem;
+        transition: all 0.2s ease-out;
+    }
+    .ybutton{
+        /* margin: 0.3rem; */
+        padding: 0.3rem;
+        font-size: 0.6rem;
+        border: 0.2rem solid rgba(255, 157, 0, 0.895);
+        background: rgba(255, 252, 208, 0.661);
+        border-radius: 0.5rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease-out;
+    }
+    .sidemenu{
+        position: fixed;
+        top: 0;
+        right: -20.5rem;
+        width: 20rem;
+    }
+    .sidemenuActive{
+        position: fixed;
+        right: 0;
+    }
+    .mainLowerside{
+        width: 15rem;
+    }
+}

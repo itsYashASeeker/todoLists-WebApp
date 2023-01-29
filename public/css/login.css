@@ -204,7 +204,7 @@ button:hover{
 
 @media (max-width: 500px) {
     input{
-        width: 12rem;
+        width: 70vw;
     }
     input, button{
         font-size: 1.5rem;

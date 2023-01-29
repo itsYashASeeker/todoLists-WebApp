@@ -111,11 +111,14 @@ handleReload();
 ideditLists.onclick = function(){
     localStorage.setItem("delLists", "N");
     localStorage.setItem("editLists", "N");
+    
     if(localStorage.getItem("menuOption")=="N"){
+        ideditLists.style.transform = "rotate(0deg)";
         ideditContainer.classList.remove("openeditContainer");
         localStorage.setItem("menuOption", "Y");
     }
     else{
+        ideditLists.style.transform = "rotate(180deg)";
         ideditContainer.classList.add("openeditContainer");
         localStorage.setItem("menuOption", "N");
     }
@@ -152,6 +155,7 @@ idDelOption.onclick = function(){
 
 // After Editing/deletion, when user wants to exit Edit mode
 idcancelLists.onclick = function(){
+    ideditLists.style.transform = "rotate(0deg)";
     if(localStorage.getItem("UserChoseMenu")==="E"){
         editNo();
         localStorage.setItem("editLists", "N");

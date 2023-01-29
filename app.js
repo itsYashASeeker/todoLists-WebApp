@@ -11,7 +11,7 @@ const googleStrategy = require("passport-google-oauth20").Strategy;
 const findOrCreate = require("mongoose-findorcreate");
 
 
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname+"/public/"));
@@ -61,7 +61,7 @@ passport.deserializeUser(function(user, done) {
 passport.use(new googleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/home" || port+"/auth/google/home",
+    callbackURL: "http://localhost:3000/auth/google/home" || process.env.PORT+"/auth/google/home",
     },
     function(accessToken, refresToken, profile, cb){
         MainLs.findOrCreate({googleId: profile.id}, function(err, user){
@@ -78,12 +78,20 @@ app.get('/favicon.ico', (req, res) => res.status(204));
 
 app.get("/", (req,res)=>{
     if(req.isAuthenticated()){
-        console.log("hello user");  
-        res.redirect("/Today");   
-        // res.send("<form method='post'><h1>Welcome</h1><button type='submit' formaction='logout'>Logout</button></form>")
+        console.log("hello user"); 
+        MainLs.findOne({username: req.user.username}, (err, userFound)=>{
+            if(err){
+                console.log(err);
+                res.redirect("/login");
+            }
+            else{
+                var redH = userFound.todata[0].hName;
+                res.redirect("/"+redH); 
+            }
+        }); 
     }
     else{
-        res.redirect("/login")
+        res.redirect("/login");
     }
 });
 
@@ -178,6 +186,12 @@ app.post("/login", (req,res)=>{
                         console.log("Login Successful");
                     }
                 });
+                if(typeof(localStorage)==="undefined" || localStorage==null){
+                    var LocalStorage = require("node-localstorage").LocalStorage;
+                    localStorage = new LocalStorage("./scratch");
+                }
+                localStorage.setItem("hello", "yash");
+                localStorage.setItem("delLists", "N");
                 res.redirect("/");
             });
         }
@@ -231,15 +245,155 @@ app.post("/:headrw/addHeader", (req,res)=>{
     var newH = req.body.inHeader;
     var headrw = req.params.headrw;
     MainLs.findOne({username: uname}, function(err, userFound){
-        const newToData = {
-            hName: newH,
-            listItems: ["Add some items.."],
+        var tData = userFound.todata;
+        var changeHeader = true;
+        tData.every(el=>{
+            if(newH===el.hName){
+                changeHeader=false;
+                return false;
+            }
+            else{
+                return true;
+            }
+        });
+        if(changeHeader===true){
+            const newToData = {
+                hName: newH,
+                listItems: ["Add some items.."],
+            }
+            userFound.todata.push(newToData);
+            userFound.save();
         }
-        userFound.todata.push(newToData);
-        userFound.save();
         res.redirect("/"+headrw);
     });
 });
+
+app.post("/:headrw/:lItem/del", (req,res)=>{
+    if(req.isAuthenticated()){
+        var headrw = req.params.headrw;
+        var lItem = req.params.lItem;
+        
+        MainLs.findOne({username: req.user.username}, (err, userFound)=>{
+            var tData = userFound.todata
+            tData.every(el=>{
+                if(headrw===el.hName){
+                    el.listItems.remove(lItem);
+                    if(el.listItems.length==0){
+                        el.listItems.push("Add some items..");
+                    }
+                    userFound.save();
+                    res.redirect("/"+headrw);
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            });
+        })
+    }  
+});
+
+app.post("/:headrw/del", (req,res)=>{
+    var headrw = req.params.headrw;
+    MainLs.findOne({username: req.user.username}, (err, userFound)=>{
+        var tData = userFound.todata;
+        if(tData.length==1 && tData[0].hName===headrw){
+            tData[0].hName="Today";
+            tData[0].listItems = ["Add some items.."];
+            userFound.save();
+            res.redirect("/Today");
+        }
+        else{
+            var indext=0;
+            tData.every(el=>{
+                if(el.hName==headrw){
+                    tData.remove(el);
+                    userFound.save();
+                    if(tData[indext]){
+                        var redH = tData[indext].hName;
+                    }
+                    else{
+                        var redH = tData[0].hName;
+                    }
+                    res.redirect("/"+redH);
+                    return false;
+                }
+                else{
+                    indext+=1;
+                    return true;
+                }
+                
+            })
+        }
+    })
+});
+
+app.post("/:headrw/upd", (req,res)=>{
+    if(req.isAuthenticated()){
+        var headrw = req.params.headrw;
+        var updH = req.body.updHeader;
+        MainLs.findOne({username: req.user.username}, (err, userFound)=>{
+            if(err){
+                console.log(err);
+                res.redirect("/"+headrw);
+            }
+            else{
+                var tData = userFound.todata;
+                tData.every(el=>{
+                    if(el.hName==headrw){
+                        el.hName=updH;
+                        userFound.save();
+                        res.redirect("/"+updH);
+                        return false;
+                    }
+                    else{
+                        return true;
+                    }
+                });
+            }
+        });
+    }
+});
+
+app.post("/:headrw/:lItem/upd", (req,res)=>{
+    if(req.isAuthenticated()){
+        var headrw = req.params.headrw;
+        var lItem = req.params.lItem;
+        var strItem = lItem.toString();
+        var updItem = req.body[strItem];
+        console.log(updItem);
+        MainLs.findOne({username: req.user.username}, (err, userFound)=>{
+            if(err){
+                console.log(err);
+                res.redirect("/"+headrw);
+            }
+            else{
+                var tData = userFound.todata;
+                tData.every(el=>{
+                    if(headrw==el.hName){
+                        var goItem=true;
+                        var i=0;
+                        while(goItem===true){
+                            if(el.listItems[i]===lItem){
+                                el.listItems[i]=updItem;
+                                userFound.save();
+                                res.redirect("/"+headrw);
+                                goItem=false;
+                            }
+                            else{
+                                i+=1;
+                            }
+                        }
+                        return false;
+                    }
+                    else{
+                        return true;
+                    }
+                })
+            }
+        })
+    }
+})
 
 app.listen(port, ()=>{
     console.log("Server started at "+port);

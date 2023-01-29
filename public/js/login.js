@@ -11,6 +11,8 @@ var idrusr = document.getElementById("idrusr");
 var idlpwd = document.getElementById("idlpwd");
 var idrpwd = document.getElementById("idrpwd");
 
+var idfname = document.getElementById("idfname");
+
 var idlogin = document.getElementById("idlogin");
 var idregister = document.getElementById("idregister");
 
@@ -19,7 +21,31 @@ var idgol = document.getElementById("idgol");
 
 var idfname = document.getElementById("idfname");
 
+function forLogin(){
+    if(idlusr.value.length==0 || idlpwd.value.length==0){
+        idlogin.setAttribute("disabled", "disabled");
+        idlogin.classList.add("disabledButton");
+    }
+    else{
+        idlogin.removeAttribute("disabled");
+        idlogin.classList.remove("disabledButton");
+    }
+}
+
+function forRegister(){
+    if(idrusr.value.length==0 || idrpwd.value.length==0 || idfname.value.length==0){
+        idregister.setAttribute("disabled", "disabled");
+        idregister.classList.add("disabledButton");
+    }
+    else{
+        idregister.removeAttribute("disabled");
+        idregister.classList.remove("disabledButton");
+    }
+}
+
 function gotoLoginPage(){
+
+    forLogin();
 
     idfullbg.classList.remove("rfullbg");
     idlogincard.classList.remove("rCard");
@@ -42,6 +68,8 @@ function gotoLoginPage(){
 }
 
 function gotoRegisterPage(){
+
+    forRegister();
 
     idfullbg.classList.add("rfullbg");
     idlogincard.classList.add("rCard");

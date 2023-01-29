@@ -15,19 +15,19 @@
             
             <p id="idlhead" class="lheadline">Login</p>
             <form method="post" id="loginForm">
-                <input type="text" name="username" placeholder="username" id="idlusr" class="lusr">
-                <input type="password" name="password" placeholder="password" id="idlpwd" class="lpwd">
+                <input type="text" name="username" placeholder="Username" id="idlusr" class="lusr" oninput="forLogin()">
+                <input type="password" name="password" placeholder="Password" id="idlpwd" class="lpwd" oninput="forLogin()">
             </form>
-            <button type="submit" id="idlogin" class="login" form="loginForm" formaction="\login">Login</button>
+            <button type="submit" id="idlogin" class="login dall" form="loginForm" formaction="\login">Login</button>
             <button type="button" id="idgor" class="doR">Not Registered?</button>
 
             <p id="idrhead" class="lheadline rheadline">Register</p>
             <form method="post" id="registerForm">
-                <input type="text" name="fname" placeholder="First Name" id="idfname" class="fname">
-                <input type="text" name="username" placeholder="rusername" id="idrusr" class="lusr rusr">      
-                <input type="password" name="password" placeholder="rpassword" id="idrpwd" class="lpwd rpwd">
+                <input type="text" name="fname" placeholder="First Name" id="idfname" class="fname" oninput="forRegister()">
+                <input type="text" name="username" placeholder="Username" id="idrusr" class="lusr rusr" oninput="forRegister()">      
+                <input type="password" name="password" placeholder="Password" id="idrpwd" class="lpwd rpwd" oninput="forRegister()">
             </form>
-            <button type="submit" id="idregister" class="login register" form="registerForm" formaction="\register">Register</button>
+            <button type="submit" id="idregister" class="login register dall" form="registerForm" formaction="\register">Register</button>
             <button type="button" id="idgol" class="doR" >Already Registered?</button>
         </div>
             <a class="gsignup" href="/auth/google" role="button">

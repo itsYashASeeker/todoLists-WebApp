@@ -93,9 +93,11 @@ border-radius: 1rem; */
     /* max-width: 100%;
     max-height: 100%; */
     background-color: black;
-    background-image: url("https://cdn.wallpapersafari.com/91/20/zkyH0r.jpg");
+    /* background-image: url("https://cdn.wallpapersafari.com/91/20/zkyH0r.jpg"); */
+    background-image: linear-gradient(rgba(123, 0, 123, 0.741), rgba(0, 0, 255, 0.071)), url("../img/bg6.jpg");
     background-position: center;
     background-size: cover;
+    /* transform: rotate(90deg); */
     z-index: -10;
     transition: 0.3s all ease-out;
 }
@@ -105,6 +107,7 @@ border-radius: 1rem; */
 }
 
 .listcard{
+    position: relative;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
@@ -118,7 +121,100 @@ border-radius: 1rem; */
     color: white;
 }
 
+/* Edit */
+
+.editLists{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+.editListsbutton{
+    position: absolute;
+    right: 0;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.76);
+    border: none;
+    cursor: pointer;
+    transition: 0.2s all ease-out;
+}
+
+.editListsbutton:hover{
+    background: white;
+    box-shadow: 0 0 0.4rem rgb(0, 89, 253);
+}
+
+.editListsbutton i{
+    font-size: 1rem;
+}
+
+.editContainer{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    color: black;
+    top: 2rem;
+    right: 2rem;
+    font-size: 1.5rem;
+    border-radius: 0.4rem;
+    clip-path: circle(0% at 100% 0);
+    transition: 0.2s clip-path ease-out;
+    z-index: 1000;
+}
+
+.openeditContainer{
+    clip-path: circle(141.2% at 100% 0);
+}
+
+.editContainer ul li{
+    margin: 0.3rem 0;
+    padding: 0 1rem;
+    list-style: none;
+    cursor: pointer;
+    transition: 0.2s all ease-out;
+}
+
+.editContainer ul li:hover{
+    background: rgb(169, 169, 169);
+}
+
+/* Cancel */
+
+.cancelLists{
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+}
+
+.cancelLists button{
+    padding: 0.5rem 0.7rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.76);
+    border: none;
+    cursor: pointer;
+}
+
+.cancelLists i{
+    font-size: 1rem;
+}
+
+.cancelLists button:hover{
+    background: white;
+    box-shadow: 0 0 0.4rem rgb(253, 0, 0);
+}
+
+
+/* Main */
+
 .uheaderdiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
     background: var(--mangotango);
     color: var(--darkseinna);
     border-radius: 0.5rem;
@@ -131,6 +227,47 @@ border-radius: 1rem; */
     font-size: 2rem;
     font-weight: 600;
     margin: 2rem;  
+    
+}
+
+.Individitem{
+    position: relative;
+    margin-top: 0.3rem;
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+}
+
+.delitem{
+    position: absolute;
+    /* display: inline-block; */
+    top: 0.6rem;
+    right: -2rem;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    
+}
+
+.delitem i{
+    color: red;
+    font-size: 1.2rem;
+}
+
+.delitem i:hover{
+    color: rgba(255, 0, 0, 0.677);
+}
+
+.editHeader i{
+    color: white;
+}
+
+.editHeader i:hover{
+    color: rgb(161, 161, 161);
+}
+
+.Individitem:hover{
+    background: var(--wh4op);
 }
 
 .addnew{
@@ -151,7 +288,7 @@ border-radius: 1rem; */
     color: var(--indigodye);
     border: 0.2rem solid var(--indigodye);
     border-radius: 0.5rem;
-    transition: all 0.2s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 .binput:focus{
@@ -169,7 +306,7 @@ border-radius: 1rem; */
     border-radius: 0.5rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 .bbutton:hover{
@@ -185,7 +322,7 @@ border-radius: 1rem; */
     
     border: 0.2rem solid var(--mangotango);
     border-radius: 0.5rem;
-    transition: all 0.2s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 .yinput:focus{
@@ -202,7 +339,7 @@ border-radius: 1rem; */
     border-radius: 0.5rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 .ybutton:hover{
@@ -226,7 +363,10 @@ border-radius: 1rem; */
     padding: 1rem;
     border-radius: 1rem 0 0 1rem;
     box-shadow: -0.3rem 0 0.3rem white;
-    background: var(--ming);
+    /* background: var(--ming); */
+    background-image: url("../img/bg8.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     backdrop-filter: blur(0.5rem);
 }
 
@@ -267,6 +407,8 @@ border-radius: 1rem; */
 
 .upperside{
     background: var(--midbluegreen);
+    background: var(--wh2op);
+    backdrop-filter: blur(0.5rem);
     border-radius: 0.3rem;
     padding: 0.5rem;
     margin-bottom: 1rem;
@@ -277,7 +419,7 @@ border-radius: 1rem; */
 .sideGreet{
     font-size: 2rem;
     font-weight: 600;
-    color: var(--indigodye);
+    color: white;
     margin: 0 2rem;
 }
 
@@ -293,13 +435,14 @@ border-radius: 1rem; */
     display: flex;
     align-items: center;
     flex-direction: column;
-    background: var(--midbluegreen);
+    background: var(--wh4op);
     margin-top: 1rem;
     max-height: 60vh;
     width: 100%;
     overflow-y:scroll;
     overflow-x: hidden;
-    border: 0.5rem solid var(--midbluegreen);
+    backdrop-filter: blur(0.5rem);
+    border: 0.5rem normal var(--wh2op);
     border-radius: 0.5rem;
     box-shadow: inset 0 0 0.4rem rgba(0, 0, 0, 0.829); 
     
@@ -324,11 +467,12 @@ border-radius: 1rem; */
     border-radius: 0.4rem;
     text-align: center;
     transition: 0.1s all ease-in;
+    box-shadow: 0 0 0.1rem black;
 }
 
 .lowerside li:hover{
     background: var(--wh1op);
-    box-shadow: 0 0 0.3rem white;
+    box-shadow: 0 0 0.3rem black;
     transform: scale(1.05);
 }
 
@@ -366,6 +510,36 @@ border-radius: 1rem; */
     width: 100%;
 }
 
+.dall{
+    display: none;
+}
+
+.eInH{
+    position: absolute;
+    background: white;
+    top: 0.25rem;
+    left: 0;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    width: 100%;
+    box-shadow: inset 0 0 0.2rem black;
+    border-radius: 0.3rem;
+    border: none;
+    transition: 0.2s all ease-in ;
+    /* width: auto; */
+}
+
+.eInH:focus{
+    outline: none;
+    border: none;
+    background: rgb(224, 224, 224);
+    box-shadow: inset 0 0 0.3rem black;
+}
+
+.noHover:hover{
+    background: none;
+}
+
 @media (max-width: 490px) {
     h1{
         font-size: 1.5rem;
@@ -387,7 +561,7 @@ border-radius: 1rem; */
         background: rgba(255, 252, 208, 0.661);
         border: 0.2rem solid rgba(255, 157, 0, 0.895);
         border-radius: 0.5rem;
-        transition: all 0.2s ease-out;
+        transition: all 0.3s ease-out;
     }
     .ybutton{
         /* margin: 0.3rem; */
@@ -398,7 +572,7 @@ border-radius: 1rem; */
         border-radius: 0.5rem;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.2s ease-out;
+        transition: all 0.3s ease-out;
     }
     .sidemenu{
         position: fixed;

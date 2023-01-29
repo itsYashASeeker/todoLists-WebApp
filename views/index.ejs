@@ -13,12 +13,32 @@
         <div class="childbg" id="idchildbg"></div>
         <form method="post">
             <div class="listcard">
+                <div class="editLists">
+                    <button type="button" id="ideditLists" class="editListsbutton"><i class="fa-sharp fa-solid fa-pen"></i></button>
+                    <div id="ideditContainer" class="editContainer">
+                        <ul>
+                            <li id="idEditOption">Edit</li>
+                            <li id="idDelOption">Delete</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cancelLists">
+                    <button type="button" id="idcancelLists"><i class="fa-solid fa-xmark"></i></button>
+                </div>
                 <div class="uheaderdiv">
                     <p name="header" class="uheader" id="idheader"><%= header %></p>
+                    <input type="text" id="ideInH" class="eInH dall" name="updHeader">
+                    <button type="submit" id="iddelHeader" class="delitem delHeader dall" formaction="/<%=header%>/del"><i class="fa-solid fa-trash"></i></button>
+                    <button type="submit" id="ideditHeader" class="delitem delHeader editHeader dall" formaction="/<%=header%>/upd"><i class="fa-solid fa-pen-to-square"></i></button>
                 </div>
                 <ul class="ullists">
                     <% for(var i=0; i<listIte.length; i++){ %>
-                        <li><%= listIte[i] %></li>
+                        <div id="idIndividitem" class="Individitem">
+                            <li id="idlItem"><%= listIte[i] %></li>
+                            <input type="text" id="idEInL" class="eInH dall" name="<%=listIte[i]%>">
+                            <button type="submit" id="iddelitem" class="delitem dall" formaction="/<%=header%>/<%=listIte[i]%>/del"><i class="fa-solid fa-trash"></i></button>
+                            <button type="submit" id="idedititem" class="delitem delHeader editHeader dall" formaction="/<%=header%>/<%=listIte[i]%>/upd"><i class="fa-solid fa-pen-to-square"></i></button>
+                        </div>
                     <% } %>
                 </ul>
                 <div class="addnew">

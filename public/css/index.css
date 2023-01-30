@@ -485,6 +485,9 @@ border-radius: 1rem; */
 }
 
 .ylogout{
+    position: absolute;
+    right: 6rem;
+    top: 1.8rem;
     outline: black;
     background: black;
     color: white;
@@ -539,6 +542,18 @@ border-radius: 1rem; */
 
 .noHover:hover{
     background: none;
+}
+
+.disabledButton{
+    opacity: 0.5;
+    cursor:default;
+}
+
+.disabledButton:hover{
+    /* background: none; */
+    box-shadow: none;
+    transform: scale(1);
+    /* border: none; */
 }
 
 @media (max-width: 490px) {

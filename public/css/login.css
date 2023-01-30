@@ -198,8 +198,8 @@ button:hover{
 }
 
 .disabledButton:hover{
-    /* background: none; */
     box-shadow: none;
+    transform: scale(1);
 }
 
 @media (max-width: 500px) {

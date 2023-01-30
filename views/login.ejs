@@ -19,7 +19,7 @@
                 <input type="password" name="password" placeholder="Password" id="idlpwd" class="lpwd" oninput="forLogin()">
             </form>
             <button type="submit" id="idlogin" class="login dall" form="loginForm" formaction="\login">Login</button>
-            <button type="button" id="idgor" class="doR">Not Registered?</button>
+            <button type="button" id="idgor" class="doR" onclick="redirectToRegister()">Not Registered?</button>
 
             <p id="idrhead" class="lheadline rheadline">Register</p>
             <form method="post" id="registerForm">
@@ -27,8 +27,8 @@
                 <input type="text" name="username" placeholder="Username" id="idrusr" class="lusr rusr" oninput="forRegister()">      
                 <input type="password" name="password" placeholder="Password" id="idrpwd" class="lpwd rpwd" oninput="forRegister()">
             </form>
-            <button type="submit" id="idregister" class="login register dall" form="registerForm" formaction="\register">Register</button>
-            <button type="button" id="idgol" class="doR" >Already Registered?</button>
+            <button type="submit" id="idregister" class="login register dall" form="registerForm" onclick="redirectToLogin()" formaction="\register">Register</button>
+            <button type="button" id="idgol" class="doR" onclick="redirectToLogin()">Already Registered?</button>
         </div>
             <a class="gsignup" href="/auth/google" role="button">
                 <i class="fab fa-google"></i>

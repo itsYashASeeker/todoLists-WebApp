@@ -23,6 +23,9 @@ const iddelHeader = document.getElementById("iddelHeader");
 const iddelitem = document.querySelectorAll("#iddelitem");
 const idDelOption = document.getElementById("idDelOption");
 
+const idAddItemIn = document.getElementById("idAddItemIn");
+const idAddItemBut = document.getElementById("idAddItemBut");
+
 const idcancelLists = document.getElementById("idcancelLists");
 
 var menuStatus = 0;
@@ -86,7 +89,66 @@ function delNo(){
     });
 }
 
+// After Editing/deletion, when user wants to exit Edit mode
+function exitEditMode(){
+    ideditLists.style.transform = "rotate(0deg)";
+    if(localStorage.getItem("UserChoseMenu")==="E"){
+        editNo();
+        localStorage.setItem("editLists", "N");
+    }
+    else if(localStorage.getItem("UserChoseMenu")==="D"){
+        delNo();
+        localStorage.setItem("delLists", "N");
+    }
+}
+
+// disable buttons when there is no input
+function disButtons(){
+    // For add Item list button
+    if(idAddItemIn.value.length==0){
+        idAddItemBut.setAttribute("disabled", "disabled");
+        idAddItemBut.classList.add("disabledButton");
+    }
+    else{
+        idAddItemBut.removeAttribute("disabled");
+        idAddItemBut.classList.remove("disabledButton");
+    }
+
+    // For add Header button
+    if(ibinput.value.length==0){
+        createBut.setAttribute("disabled", "disabled");
+        createBut.classList.add("disabledButton");
+    }
+    else{
+        createBut.removeAttribute("disabled");
+        createBut.classList.remove("disabledButton");
+    }
+
+    // For edit Header
+    if(ideInH.value.length==0){
+        ideditHeader.setAttribute("disabled", "disabled");
+        ideditHeader.classList.add("disabledButton");
+    }
+    else{
+        ideditHeader.removeAttribute("disabled");
+        ideditHeader.classList.remove("disabledButton");
+    }
+
+    // For edit List items
+    for(var i=0;i<idEInL.length;i++){
+        if(idEInL[i].value.length==0){
+            idedititem[i].setAttribute("disabled", "disabled");
+            idedititem[i].classList.add("disabledButton");
+        }
+        else{
+            idedititem[i].removeAttribute("disabled");
+            idedititem[i].classList.remove("disabledButton");
+        }
+    }
+}
+
 function handleReload(){
+    disButtons();
     if(localStorage.getItem("UserChoseMenu")==="E"){
         if(localStorage.getItem("editLists")=="Y"){
             editYes();
@@ -153,18 +215,7 @@ idDelOption.onclick = function(){
 
 }
 
-// After Editing/deletion, when user wants to exit Edit mode
-idcancelLists.onclick = function(){
-    ideditLists.style.transform = "rotate(0deg)";
-    if(localStorage.getItem("UserChoseMenu")==="E"){
-        editNo();
-        localStorage.setItem("editLists", "N");
-    }
-    else if(localStorage.getItem("UserChoseMenu")==="D"){
-        delNo();
-        localStorage.setItem("delLists", "N");
-    }
-}
+
 
 explore.onclick = function(){
     if(menuStatus==0){

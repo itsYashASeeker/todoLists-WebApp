@@ -90,6 +90,16 @@ function gotoRegisterPage(){
     idgor.classList.add("dall");
 }
 
+function redirectToRegister(){
+    localStorage.setItem("currentPage", "R");
+    gotoRegisterPage();     
+}
+
+function redirectToLogin(){
+    localStorage.setItem("currentPage", "L");
+    gotoLoginPage();
+}
+
 function handleReload(){
     if(localStorage.getItem("currentPage")==="R"){
         localStorage.setItem("currentPage", "R");
@@ -103,12 +113,3 @@ function handleReload(){
 
 handleReload();
 
-idgor.onclick = function(){
-    localStorage.setItem("currentPage", "R");
-    gotoRegisterPage();     
-}
-
-idgol.onclick = function(){
-    localStorage.setItem("currentPage", "L");
-    gotoLoginPage();
-}

@@ -12,6 +12,7 @@
     <div class="fullbg" id="idfullbg">
         <div class="childbg" id="idchildbg"></div>
         <form method="post">
+            <button type="submit" formaction="/logout" class="ylogout">Logout</button>
             <div class="listcard">
                 <div class="editLists">
                     <button type="button" id="ideditLists" class="editListsbutton"><i class="fa-solid fa-caret-down"></i></button>
@@ -23,27 +24,27 @@
                     </div>
                 </div>
                 <div class="cancelLists">
-                    <button type="button" id="idcancelLists"><i class="fa-solid fa-xmark"></i></button>
+                    <button type="button" id="idcancelLists" class="dall" onclick="exitEditMode()"><i class="fa-solid fa-xmark"></i></button>
                 </div>
                 <div class="uheaderdiv">
                     <p name="header" class="uheader" id="idheader"><%= header %></p>
-                    <input type="text" id="ideInH" class="eInH dall" name="updHeader">
-                    <button type="submit" id="iddelHeader" class="delitem delHeader dall" formaction="/<%=header%>/del"><i class="fa-solid fa-trash"></i></button>
-                    <button type="submit" id="ideditHeader" class="delitem delHeader editHeader dall" formaction="/<%=header%>/upd"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <input type="text" id="ideInH" class="eInH dall" name="updHeader" oninput="disButtons()">
+                    <button type="submit" id="iddelHeader" class="delitem delHeader dall" onclick="exitEditMode()" formaction="/<%=header%>/del"><i class="fa-solid fa-trash"></i></button>
+                    <button type="submit" id="ideditHeader" class="delitem delHeader editHeader dall" onclick="exitEditMode()" formaction="/<%=header%>/upd"><i class="fa-solid fa-check"></i></button>
                 </div>
                 <ul class="ullists">
                     <% for(var i=0; i<listIte.length; i++){ %>
                         <div id="idIndividitem" class="Individitem">
                             <li id="idlItem"><%= listIte[i] %></li>
-                            <input type="text" id="idEInL" class="eInH dall" name="<%=listIte[i]%>">
-                            <button type="submit" id="iddelitem" class="delitem dall" formaction="/<%=header%>/<%=listIte[i]%>/del"><i class="fa-solid fa-trash"></i></button>
-                            <button type="submit" id="idedititem" class="delitem delHeader editHeader dall" formaction="/<%=header%>/<%=listIte[i]%>/upd"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <input type="text" id="idEInL" class="eInH dall" name="<%=listIte[i]%>" oninput="disButtons()">
+                            <button type="submit" id="iddelitem" class="delitem dall" onclick="exitEditMode()" formaction="/<%=header%>/<%=listIte[i]%>/del"><i class="fa-solid fa-trash"></i></button>
+                            <button type="submit" id="idedititem" class="delitem delHeader editHeader dall" onclick="exitEditMode()" formaction="/<%=header%>/<%=listIte[i]%>/upd"><i class="fa-solid fa-check"></i></button>
                         </div>
                     <% } %>
                 </ul>
                 <div class="addnew">
-                    <input type="text" placeholder="todo item" name="list_item" class="yinput">
-                    <button name="uhead" type="menu" value="<%= header %>" class="ybutton" formaction="<%=header%>/addList">Submit</button>
+                    <input type="text" placeholder="todo item" name="list_item" class="yinput" id="idAddItemIn" oninput="disButtons()">
+                    <button name="uhead" type="menu" value="<%= header %>" class="ybutton" id="idAddItemBut" formaction="<%=header%>/addList">Submit</button>
                 </div>
             </div>
            
@@ -62,10 +63,10 @@
                 </div>
                 <div class="mainLower2">
                     <div class="lastLower">
-                        <input type="text" placeholder="New Header" name="inHeader" class="binput" id="ibinput">
+                        <input type="text" placeholder="New Header" name="inHeader" class="binput" id="ibinput" oninput="disButtons()">
                         <button type="submit" name="createHead" class="bbutton" id="createBut" formaction="<%=header%>/addHeader">Create</button>
                     </div>  
-                    <button type="submit" formaction="/logout" class="ylogout">Logout</button>
+                    
                 </div>
             </div>
             <button type="button" id="explore"><i class="fa-solid fa-compass" id="iexplore"></i></button>

@@ -61,7 +61,7 @@ passport.deserializeUser(function(user, done) {
 passport.use(new googleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: process.env.PORT+"/auth/google/home" || "http://localhost:3000/auth/google/home",
+    callbackURL: "https://todolists-pora.onrender.com/auth/google/home" || "http://localhost:3000/auth/google/home",
     },
     function(accessToken, refresToken, profile, cb){
         MainLs.findOrCreate({googleId: profile.id}, function(err, user){

@@ -29,7 +29,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(cors());
+app.use(cors());
 // app.use("/getcourses", createProxyMiddleware({
 //     // target: process.env.REACT_COURSE, //original url
 //     // changeOrigin: true,
@@ -41,6 +41,17 @@ app.use(passport.session());
 
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true });
 // mongoose.connect("mongodb://localhost:27017/MainLs", {useNewUrlParser: true});
+
+
+const likeSchema = new mongoose.Schema({
+    likes: Number,
+    fId: Number,
+});
+
+// likeSchema.plugin(passportLocalMongoose);
+// likeSchema.plugin(findOrCreate);
+
+const LikeLs = new mongoose.model("LikeLs", likeSchema);
 
 const todoSchema = new mongoose.Schema({
     firstName: String,
@@ -59,6 +70,8 @@ todoSchema.plugin(passportLocalMongoose);
 todoSchema.plugin(findOrCreate);
 
 const MainLs = new mongoose.model("MainLs", todoSchema);
+
+
 
 passport.use(MainLs.createStrategy());
 
@@ -405,6 +418,21 @@ app.get("/getcourses/foryash", (req, res) => {
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     return res.json(courses);
 
+})
+
+app.get("/getcourses/likes", async (req, res) => {
+    const data = await LikeLs.find();
+    res.send(data);
+})
+
+app.post("/getcourses/addLike/:id/:likes", async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    const fId = req.params.id;
+    const likes = req.params.likes
+    await LikeLs.findOneAndUpdate({ fId: fId }, { likes: likes });
+    const data = await LikeLs.find();
+    res.send(data);
 })
 
 app.listen(port, () => {

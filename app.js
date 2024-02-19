@@ -449,10 +449,10 @@ const transporterV = nodemailer.createTransport({
 });
 
 app.post("/y/u/send", async (req, res) => {
-  const { subjectE, bodyE, sendEmail } = req.body;
+  const { subjectE, bodyE, sendEmail, sendName } = req.body;
   //   console.log(subject);
   const mailConfigs = {
-    from: `Yash Chauhan <${process.env.APP_USER}>`,
+    from: `${sendName} <${process.env.APP_USER}>`,
     to: `yashchauhan.coder@gmail.com`,
     subject: subjectE,
     text: bodyE,
@@ -468,8 +468,7 @@ app.post("/y/u/send", async (req, res) => {
         {
           from: `Yash Chauhan <aindianboy2697@yahoo.com>`,
           to: sendEmail,
-          subject:
-            "Yash Chauhan - Thank you for reaching out for the amazing opportunity",
+          subject: "Thank you for reaching out for the amazing opportunity",
           text: `Hey, This is an auto generated email!\nThis is to confirm that the mail has been received by me\n\nThe mail that you sent:\n-------------------------\nSubject: ${subjectE}\nBody: ${bodyE}\n-------------------------\nI will soon read and respond to your mail!!\nBest Regards,\nYash Kamlesh Chauhan`,
         },
         async function (err, result) {

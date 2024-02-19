@@ -10,6 +10,8 @@
   "author": "Yash Chauhan",
   "license": "ISC",
   "dependencies": {
+    "@netlify/functions": "^2.6.0",
+    "@types/express": "^4.17.21",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "dot-env": "^0.0.1",
@@ -26,6 +28,11 @@
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^7.1.2"
+    "passport-local-mongoose": "^7.1.2",
+    "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.90.2",
+    "webpack-cli": "^5.1.4"
   }
 }

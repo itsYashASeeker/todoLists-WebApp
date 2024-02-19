@@ -464,14 +464,24 @@ app.post("/y/u/send", async (req, res) => {
         .status(402)
         .json({ error: ["Error occured, Please try again"] });
     } else {
-      transporterV.sendMail({
-        from: `Yash Chauhan <aindianboy2697@yahoo.com>`,
-        to: sendEmail,
-        subject:
-          "Yash Chauhan - Thank you for reaching out for the amazing opportunity",
-        text: `Hey, This is an auto generated email!\nThis is to confirm that the mail has been received by me\n\nThe mail that you sent:\n-------------------------\nSubject: ${subjectE}\nBody: ${bodyE}\n-------------------------\nI will soon read and respond to your mail!!\nBest Regards,\nYash Kamlesh Chauhan`,
-      });
-      return res.status(200).send("Mail sent successfully!");
+      transporterV.sendMail(
+        {
+          from: `Yash Chauhan <aindianboy2697@yahoo.com>`,
+          to: sendEmail,
+          subject:
+            "Yash Chauhan - Thank you for reaching out for the amazing opportunity",
+          text: `Hey, This is an auto generated email!\nThis is to confirm that the mail has been received by me\n\nThe mail that you sent:\n-------------------------\nSubject: ${subjectE}\nBody: ${bodyE}\n-------------------------\nI will soon read and respond to your mail!!\nBest Regards,\nYash Kamlesh Chauhan`,
+        },
+        async function (err, result) {
+          if (err) {
+            return res
+              .status(402)
+              .json({ error: ["You have provided an Invalid email address"] });
+          } else {
+            return res.status(200).send("Mail sent successfully!");
+          }
+        }
+      );
     }
   });
 });
